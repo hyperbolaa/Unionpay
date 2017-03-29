@@ -61,30 +61,26 @@
  * 60-89：持卡人/发卡行 相关问题导致的错误
  * 90-99：预留
  
-####签名类型：signMethod
-  * 01：商户直接接入
 
  
- 
-##备注：
+####备注
     version5.0.0 与 version5.1.0 验签方式不一样
  
  
- 
-##安装
+####安装
     composer require hyperbolaa/unionpay dev-master
  
-##laravel 配置
+####laravel 配置
      'providers' => [
          // ...
          Hyperbolaa\Unionpay\UnionpayServiceProvider::class,
      ]
   
-##生成配置文件    
+####生成配置文件
     运行 `php artisan vendor:publish` 命令，
     发布配置文件到你的项目中。
  
-##代码使用
+####代码使用
     $unionpay = app('unionpay.mobile');
     $unionpay->setOrderId('${orderid}');
     ........
@@ -92,7 +88,7 @@
     //返回签名后的支付参数给移动端的sdk
     return $unionpay->consume();
  
-##结果通知
+####结果通知
  
  
  
