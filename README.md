@@ -1,8 +1,6 @@
-##Unionpay & laravel
-银联支付
+## Unionpay & laravel & 银联支付
 
-
-####交易类型
+#### 交易类型
  * 00：查询交易，
  * 01：消费，
  * 02：预授权，
@@ -29,7 +27,7 @@
  * 94：IC卡脚本通知 ,
  * 95：查询更新加密公钥证书
  
-####产品类型:bizType
+#### 产品类型:bizType
  * 依据实际业务场景填写 默认取值：000000 具体取值范围：
  * 000201：B2C 网关支付
  * 000301：认证支付 2.0
@@ -42,18 +40,18 @@
  * 001001：订购
  * 000202：B2B
  
-####接入类型：accessType
+#### 接入类型：accessType
  * 0：商户直接接入
  * 1：收单机构接入
  * 2：平台商接入
 
-####渠道类型：channelType
+#### 渠道类型：channelType
  * 05：语音
  * 07：互联网
  * 08：移动
  * 16：数字机顶盒
 
-####应答码：respCode
+#### 应答码：respCode
  * 00：成功
  * 01-09：银联全渠道系统原因导致的错误
  * 10-29：商户端上送保温格式检查导致的错误
@@ -63,32 +61,32 @@
  
 
  
-####备注
+#### 备注
     version5.0.0 与 version5.1.0 验签方式不一样
  
  
-####安装
+#### 安装
     composer require hyperbolaa/unionpay dev-master
  
-####laravel 配置
+#### laravel 配置
      'providers' => [
          // ...
          Hyperbolaa\Unionpay\UnionpayServiceProvider::class,
      ]
   
-####生成配置文件
+#### 生成配置文件
     运行 `php artisan vendor:publish` 命令，
     发布配置文件到你的项目中。
  
-####代码使用
+#### 代码使用
     $unionpay = app('unionpay.mobile');
     $unionpay->setOrderId('${orderid}');
     ........
     
     //返回签名后的支付参数给移动端的sdk
     return $unionpay->consume();
- 
-####结果通知
+
+
  
  
  
