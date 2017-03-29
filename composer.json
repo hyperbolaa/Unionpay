@@ -1,0 +1,26 @@
+{
+  "name": "hyperbolaa/unionpay",
+  "type": "project",
+  "description": "银联支付SDK在Laravel5.2封装包。",
+  "keywords": ["银联", "Laravel5", "Laravel5.2","union","unionpay"],
+  "homepage": "https://github.com/hyperbolaa/Unionpay",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "chong yu",
+      "email": "chongyu366@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "illuminate/support": "5.*",
+    "illuminate/events": "5.*",
+    "illuminate/config": "5.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Hyperbolaa\\Unionpay\\": "src/Hyperbolaa/Unionpay/"
+    }
+  },
+  "minimum-stability": "stable"
+}
