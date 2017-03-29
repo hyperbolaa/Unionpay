@@ -78,14 +78,44 @@
     运行 `php artisan vendor:publish` 命令，
     发布配置文件到你的项目中。
  
-#### 代码使用
+#### app代码使用
     $unionpay = app('unionpay.mobile');
     $unionpay->setOrderId('${orderid}');
     ........
     
     //返回签名后的支付参数给移动端的sdk
     return $unionpay->consume();
-
+    
+#### wap代码使用
+    $unionpay = app('unionpay.wap');
+    $unionpay->setOrderId('${orderid}');
+    ........
+    
+    //返回签名后的支付参数给移动端的sdk
+    $html = $unionpay->consume();
+    return reponse($html);
+    
+#### 异步通知
+    	public function unionpayNotify()
+    	{
+    		if (! app('unionpay.mobile')->verify()) {
+    			Log::notice('unionpay notify post data verification fail.', [
+    				'data' => Request::instance()->getContent()
+    			]);
+    			return 'fail';
+    		}
+    
+    		// 判断通知类型。
+    		if (Input::get('respCode') == '00') {
+    				// TODO: 支付成功，取得订单号进行其它相关操作。
+    				Log::debug('unionpay notify get data verification success.', [
+    					'out_trade_no'  => Input::get('orderId'),
+    					'trade_no'      => Input::get('queryId')
+    				]);
+    		}
+    
+    		return 'success';
+    	}
 
  
  
