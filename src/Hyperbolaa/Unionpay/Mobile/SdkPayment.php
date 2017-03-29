@@ -61,6 +61,7 @@ class SdkPayment
 
 		//发送数据
 		$result_arr = Rsa::post($this->appTransUrl, $params);
+		//验证请求
 		if(sizeof($result_arr) > 0){
 			return null;
 		}
@@ -102,15 +103,19 @@ class SdkPayment
 
 		//发送数据
 		$result_arr = Rsa::post($this->backTransUrl, $params);
-		if(sizeof($result_arr) > 0){
-			return null;
+
+		//验证请求
+		if(sizeof($result_arr) <= 0){
+			return -1;
 		}
 		//验签
 		if(!$this->verify($result_arr)){
-			return null;
+			return -2;
 		}
 
-		//接收处理结果
+		return $result_arr;
+
+/*		//接收处理结果
 		if ($result_arr["respCode"] == "00"){
 			//交易已受理，等待接收后台通知更新订单状态，如果通知长时间未收到也可发起交易状态查询
 			//TODO
@@ -122,7 +127,7 @@ class SdkPayment
 		} else {
 			//其他应答码做以失败处理
 			//TODO
-		}
+		}*/
 
 	}
 
@@ -152,15 +157,19 @@ class SdkPayment
 
 		//发送数据
 		$result_arr = Rsa::post($this->backTransUrl, $params);
-		if(sizeof($result_arr) > 0){
-			return null;
+
+		//验证请求
+		if(sizeof($result_arr) <= 0){
+			return -1;
 		}
 		//验签
 		if(!$this->verify($result_arr)){
-			return null;
+			return -2;
 		}
 
-		//处理报文
+		return $result_arr;
+
+/*		//处理报文
 		if ($result_arr["respCode"] == "00"){
 			//交易已受理，等待接收后台通知更新订单状态，如果通知长时间未收到也可发起交易状态查询
 			//TODO
@@ -172,7 +181,7 @@ class SdkPayment
 		} else {
 			//其他应答码做以失败处理
 			//TODO
-		}
+		}*/
 
 	}
 
@@ -191,7 +200,7 @@ class SdkPayment
 
 			//TODO 以下信息需要填写
 			'orderId'       => $this->order_id,	//请修改被查询的交易的订单号，8-32位数字字母，不能含“-”或“_”，此处默认取demo演示页面传递的参数
-			'merId'         => $this->merchant_id,	    //商户代码，请改自己的测试商户号，此处默认取demo演示页面传递的参数
+			'merId'         => $this->merchant_id,//商户代码，请改自己的测试商户号，此处默认取demo演示页面传递的参数
 			'txnTime'       => $this->txn_time,	//请修改被查询的交易的订单发送时间，格式为YYYYMMDDhhmmss，此处默认取demo演示页面传递的参数
 		];
 
@@ -199,15 +208,19 @@ class SdkPayment
 
 		//发送数据
 		$result_arr = Rsa::post($this->singleQueryUrl, $params);
-		if(sizeof($result_arr) > 0){
-			return null;
+
+		//验证请求
+		if(sizeof($result_arr) <= 0){
+			return -1;
 		}
 		//验签
 		if(!$this->verify($result_arr)){
-			return null;
+			return -2;
 		}
 
-		//报文处理
+		return $result_arr;
+
+/*		//报文处理
 		if ($result_arr["respCode"] == "00"){
 			if ($result_arr["origRespCode"] == "00"){
 				//交易成功
@@ -229,7 +242,7 @@ class SdkPayment
 		} else {
 			//其他应答码做以失败处理
 			//TODO
-		}
+		}*/
 	}
 
 	/**
