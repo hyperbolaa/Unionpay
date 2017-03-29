@@ -80,20 +80,21 @@
  
 #### app代码使用
     $unionpay = app('unionpay.mobile');
-    $unionpay->setOrderId('${orderid}');
-    ........
+    $unionpay->setOrderId('order_id');
+    $unionpay->setTxnAmt('order_amount');
+    $unionpay->setTxnTime('req_time');
     
-    //返回签名后的支付参数给移动端的sdk
+    //返回签名后的支付参数给移动端的sdk-》{539512046523081531300}
     return $unionpay->consume();
     
 #### wap代码使用
     $unionpay = app('unionpay.wap');
-    $unionpay->setOrderId('${orderid}');
-    ........
+    $unionpay->setOrderId('order_id');
+    $unionpay->setTxnAmt('order_amount');
+    $unionpay->setTxnTime('req_time');
     
-    //返回签名后的支付参数给移动端的sdk
-    $html = $unionpay->consume();
-    return reponse($html);
+    //返回一个表单
+    return $unionpay->consume();
     
 #### 异步通知
     	public function unionpayNotify()
