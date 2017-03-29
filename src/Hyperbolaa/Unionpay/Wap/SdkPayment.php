@@ -13,9 +13,8 @@ class SdkPayment
 	//请求地址
 	private $frontTransUrl     = 'https://gateway.95516.com/gateway/api/frontTransReq.do';
 	private $backTransUrl      = 'https://gateway.95516.com/gateway/api/backTransReq.do';
-	private $singleQueryUrl    = 'https://gateway.95516.com/gateway/api/appTransReq.do';
-	private $appTransUrl       = 'https://gateway.95516.com/gateway/api/queryTrans.do';
-
+	private $appTransUrl       = 'https://gateway.95516.com/gateway/api/appTransReq.do';
+	private $singleQueryUrl    = 'https://gateway.95516.com/gateway/api/queryTrans.do';
 	//基本信息
 	private $version  = '5.0.0';
 	private $sign_method = '01';
@@ -54,7 +53,7 @@ class SdkPayment
 			'backUrl'       => $this->back_url,	    //后台通知地址
 			'signMethod'    => $this->sign_method,	//签名方法
 			'channelType'   => '08',	//渠道类型，07-PC，08-手机
-			'accessType'    => '0',	//接入类型
+			'accessType'    => '0',	    //接入类型
 			'currencyCode'  => '156', //交易币种，境内商户固定156
 			//todo
 			'merId'         => $this->merchant_id,  //商户代码，请改自己的测试商户号，此处默认取demo演示页面传递的参数
@@ -246,7 +245,7 @@ class SdkPayment
 	 * 生成签名
 	 */
 	private function makeSignature($params){
-		return  Rsa::getParamsSignatureWithRSA($params,$this->cert_dir,$this->cert_pwd);
+		return  Rsa::getParamsSignatureWithRSA($params,$this->cert_path,$this->cert_pwd);
 	}
 
 	/**

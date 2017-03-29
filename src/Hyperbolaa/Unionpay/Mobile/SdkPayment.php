@@ -10,12 +10,11 @@ use Hyperbolaa\Unionpay\Lib\Rsa;
  */
 class SdkPayment
 {
-
 	//请求地址
 	private $frontTransUrl     = 'https://gateway.95516.com/gateway/api/frontTransReq.do';
 	private $backTransUrl      = 'https://gateway.95516.com/gateway/api/backTransReq.do';
-	private $singleQueryUrl    = 'https://gateway.95516.com/gateway/api/appTransReq.do';
-	private $appTransUrl       = 'https://gateway.95516.com/gateway/api/queryTrans.do';
+	private $appTransUrl       = 'https://gateway.95516.com/gateway/api/appTransReq.do';
+	private $singleQueryUrl    = 'https://gateway.95516.com/gateway/api/queryTrans.do';
 	//基本信息
 	private $version        = '5.0.0';
 	private $sign_method    = '01';//rsa
@@ -57,11 +56,11 @@ class SdkPayment
 			'txnAmt'        => $this->txn_amt,	//交易金额，单位分，此处默认取demo演示页面传递的参数
 
 		];
-		$params = Rsa::filterData($params);
-		$data['signature'] = $this->makeSignature($params);
+
+		$params['signature'] = $this->makeSignature($params);
 
 		//发送数据
-		$result_arr = Rsa::post($this->appTransUrl, $data);
+		$result_arr = Rsa::post($this->appTransUrl, $params);
 		if(sizeof($result_arr) > 0){
 			return null;
 		}
@@ -99,11 +98,10 @@ class SdkPayment
 			'txnAmt'        => $this->txn_amt,       //交易金额，消费撤销时需和原消费一致，此处默认取demo演示页面传递的参数
 		];
 
-		$params = Rsa::filterData($params);
-		$data['signature'] = $this->makeSignature($params);
+		$params['signature'] = $this->makeSignature($params);
 
 		//发送数据
-		$result_arr = Rsa::post($this->backTransUrl, $data);
+		$result_arr = Rsa::post($this->backTransUrl, $params);
 		if(sizeof($result_arr) > 0){
 			return null;
 		}
@@ -150,11 +148,10 @@ class SdkPayment
 			'txnAmt'        => $this->txn_amt,       //交易金额，退货总金额需要小于等于原消费
 		];
 
-		$params = Rsa::filterData($params);
-		$data['signature'] = $this->makeSignature($params);
+		$params['signature'] = $this->makeSignature($params);
 
 		//发送数据
-		$result_arr = Rsa::post($this->backTransUrl, $data);
+		$result_arr = Rsa::post($this->backTransUrl, $params);
 		if(sizeof($result_arr) > 0){
 			return null;
 		}
@@ -198,11 +195,10 @@ class SdkPayment
 			'txnTime'       => $this->txn_time,	//请修改被查询的交易的订单发送时间，格式为YYYYMMDDhhmmss，此处默认取demo演示页面传递的参数
 		];
 
-		$params = Rsa::filterData($params);
-		$data['signature'] = $this->makeSignature($params);
+		$params['signature'] = $this->makeSignature($params);
 
 		//发送数据
-		$result_arr = Rsa::post($this->singleQueryUrl, $data);
+		$result_arr = Rsa::post($this->singleQueryUrl, $params);
 		if(sizeof($result_arr) > 0){
 			return null;
 		}
@@ -254,7 +250,7 @@ class SdkPayment
 	 * 生成签名
 	 */
 	private function makeSignature($params){
-		return  Rsa::getParamsSignatureWithRSA($params,$this->cert_dir,$this->cert_pwd);
+		return  Rsa::getParamsSignatureWithRSA($params,$this->cert_path,$this->cert_pwd);
 	}
 
 	/**
