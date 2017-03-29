@@ -83,6 +83,7 @@ class SdkPayment
 			'txnType'       => '31',		         //交易类型
 			'txnSubType'    => '00',		         //交易子类
 			'bizType'       => '000201',		     //业务类型
+			'certId'        => $this->getCertId(),   //签名私钥证书
 			'accessType'    => '0',		            //接入类型
 			'channelType'   => '07',		        //渠道类型
 			'backUrl'       => $this->back_url,     //后台通知地址
@@ -139,6 +140,7 @@ class SdkPayment
 			'txnType'       => '04',		          //交易类型-退货
 			'txnSubType'    => '00',		          //交易子类
 			'bizType'       => '000201',		      //业务类型
+			'certId'        => $this->getCertId(),   //签名私钥证书
 			'accessType'    => '0',		             //接入类型
 			'channelType'   => '07',		        //渠道类型
 			'backUrl'       => $this->back_url,     //后台通知地址
@@ -193,6 +195,7 @@ class SdkPayment
 			'txnType'       => '00',		      //交易类型
 			'txnSubType'    => '00',		  //交易子类
 			'bizType'       => '000000',		  //业务类型
+			'certId'        => $this->getCertId(),   //签名私钥证书
 			'accessType'    => '0',		  //接入类型
 			'channelType'   => '07',		  //渠道类型
 
