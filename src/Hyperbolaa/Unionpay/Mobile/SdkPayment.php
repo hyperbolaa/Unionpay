@@ -62,11 +62,7 @@ class SdkPayment
 		//发送数据
 		$result_arr = Rsa::post($this->appTransUrl, $params);
 		//验证请求
-		if(sizeof($result_arr) > 0){
-			return null;
-		}
-		//验签
-		if(!$this->verify($result_arr)){
+		if(sizeof($result_arr) <= 0){
 			return null;
 		}
 
