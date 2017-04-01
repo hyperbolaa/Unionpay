@@ -118,6 +118,9 @@
     		return 'success';
     	}
 
- ## happy coding
+
+## 稳定版本使用
+    composer require hyperbolaa/unionpay:1.0
+## happy coding
  
  
