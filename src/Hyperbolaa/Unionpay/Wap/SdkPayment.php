@@ -101,15 +101,6 @@ class SdkPayment
 		//异步提交---后台回调地址
 		$result_arr = Rsa::post($this->backTransUrl,$params);
 
-		//验证请求
-		if(sizeof($result_arr) <= 0){
-			return -1;
-		}
-		//验签
-		if(!$this->verify($result_arr)){
-			return -2;
-		}
-
 		return $result_arr;
 
 /*		//报文处理
@@ -156,14 +147,6 @@ class SdkPayment
 		$params['signature'] = $this->makeSignature($params);
 		//异步提交---后台通知地址
 		$result_arr = Rsa::post($this->backTransUrl,$params);
-		//验证请求
-		if(sizeof($result_arr) <= 0){
-			return -1;
-		}
-		//验签
-		if(!$this->verify($result_arr)){
-			return -2;
-		}
 
 		return $result_arr;
 
@@ -209,15 +192,6 @@ class SdkPayment
 
 		//异步提交
 		$result_arr = Rsa::post($this->singleQueryUrl,$params);
-
-		//验证请求
-		if(sizeof($result_arr) <= 0){
-			return -1;
-		}
-		//验签
-		if(!$this->verify($result_arr)){
-			return -2;
-		}
 
 		//返回信息，等待报文处理
 		return $result_arr;

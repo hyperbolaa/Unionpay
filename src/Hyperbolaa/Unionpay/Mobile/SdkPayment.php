@@ -101,15 +101,6 @@ class SdkPayment
 		//发送数据
 		$result_arr = Rsa::post($this->backTransUrl, $params);
 
-		//验证请求
-		if(sizeof($result_arr) <= 0){
-			return -1;
-		}
-		//验签
-		if(!$this->verify($result_arr)){
-			return -2;
-		}
-
 		return $result_arr;
 
 /*		//接收处理结果
@@ -156,15 +147,6 @@ class SdkPayment
 		//发送数据
 		$result_arr = Rsa::post($this->backTransUrl, $params);
 
-		//验证请求
-		if(sizeof($result_arr) <= 0){
-			return -1;
-		}
-		//验签
-		if(!$this->verify($result_arr)){
-			return -2;
-		}
-
 		return $result_arr;
 
 /*		//处理报文
@@ -207,15 +189,6 @@ class SdkPayment
 
 		//发送数据
 		$result_arr = Rsa::post($this->singleQueryUrl, $params);
-
-		//验证请求
-		if(sizeof($result_arr) <= 0){
-			return -1;
-		}
-		//验签
-		if(!$this->verify($result_arr)){
-			return -2;
-		}
 
 		return $result_arr;
 
