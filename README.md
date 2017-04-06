@@ -140,5 +140,5 @@
  
  ## Related
  
- - [Ylpay](https://github.com/hyperbolaa/Ylpay)
- - [Alipay](https://github.com/hyperbolaa/Alipay)
+ - [Ylpay](https://github.com/hyperbolaa/Ylpay)   基于laravel5的POS通支付
+ - [Alipay](https://github.com/hyperbolaa/Alipay)  基于laravel5的支付宝支付
