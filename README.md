@@ -142,3 +142,4 @@
  
  - [Ylpay](https://github.com/hyperbolaa/Ylpay)   基于laravel5的POS通支付
  - [Alipay](https://github.com/hyperbolaa/Alipay)  基于laravel5的支付宝支付
+ - [Alisms](https://github.com/hyperbolaa/Alisms)  基于laravel5的阿里云短信
