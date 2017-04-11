@@ -129,7 +129,7 @@
 
 如果有什么问题，可通过以下方式联系我。提供有偿技术服务。
 
-也希望更多朋友可用提供代码支持。欢迎交流与大赏。
+也希望更多朋友可用提供代码支持。欢迎交流与打赏。
 
 **邮箱**：yuchong321@126.com
 
@@ -142,4 +142,5 @@
  
  - [Ylpay](https://github.com/hyperbolaa/Ylpay)   基于laravel5的POS通支付
  - [Alipay](https://github.com/hyperbolaa/Alipay)  基于laravel5的支付宝支付
+ - [Wechatpay](https://github.com/hyperbolaa/Wechatpay)  基于laravel5的微信支付
  - [Alisms](https://github.com/hyperbolaa/Alisms)  基于laravel5的阿里云短信
