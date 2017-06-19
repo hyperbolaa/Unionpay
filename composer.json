@@ -1,8 +1,8 @@
 {
   "name": "hyperbolaa/unionpay",
   "type": "project",
-  "description": "银联支付SDK在Laravel5.2封装包。",
-  "keywords": ["银联", "Laravel5", "Laravel5.2","union","unionpay"],
+  "description": "银联支付SDK在Laravel5中封装包。",
+  "keywords": ["银联", "银联支付", "Laravel","Laravel5","union","unionpay"],
   "homepage": "https://github.com/hyperbolaa/Unionpay",
   "license": "MIT",
   "authors": [
